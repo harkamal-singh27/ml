@@ -14,7 +14,8 @@ X_std = X.std()
 X_scaled = (X - X_mean) / X_std
 
 # covarmatrix
-cov_matrix = np.cov(X_scaled.T)
+n_samples = X_scaled.shape[0]
+cov_matrix = np.dot(X_scaled.T, X_scaled) / (n_samples - 1)
 
 # eigen vector
 eigenvalues, eigenvectors = np.linalg.eigh(cov_matrix)
